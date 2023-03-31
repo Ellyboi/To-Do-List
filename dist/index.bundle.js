@@ -10,41 +10,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-const activitiesToDo = [
-  {
-    description: 'Reading JS Documentation',
-    completed: false,
-    id: 1,
-  },
-  {
-    description: 'Reading Bootstrap Documentaion',
-    completed: false,
-    id: 2,
-  },
-  {
-    description: 'DOM Documentaion',
-    completed: false,
-    id: 3,
-  },
-];
-
-const taskContainer = document.getElementById('task-list');
-
-const showTasks = () => {
-  activitiesToDo.forEach((task) => {
-    const taskCard = document.createElement('div');
-    taskCard.classList = 'task-content';
-    taskCard.innerHTML = `<div class="task-text">
-                            <input type="checkbox">
-                            <p class="task-text">${task.description}</p>
-                          </div>
-                          <i class="fa-solid fa-trash-can" id="delete-task"></i>`;
-    taskContainer.appendChild(taskCard);
-  });
-};
-
-showTasks();
-
 const taskList = document.getElementById('task-list');
 const newTask = document.getElementById('task-input');
 const submit = document.getElementById('submit-icon');
