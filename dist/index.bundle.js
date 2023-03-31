@@ -5,44 +5,45 @@
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony import */ var _modules_functionality_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(11);
 /* Imports */
 
 
-const activitiesToDo = [
-  {
-    description: 'First To Do List',
-    completed: false,
-    id: 1,
-  },
-  {
-    description: 'Second To Do List',
-    completed: false,
-    id: 2,
-  },
-  {
-    description: 'Third To Do List',
-    completed: false,
-    id: 3,
-  },
-];
 
-const taskContainer = document.getElementById('task-list');
+const taskList = document.getElementById('task-list');
+const newTask = document.getElementById('task-input');
+const submit = document.getElementById('submit-icon');
 
-const showTasks = () => {
-  activitiesToDo.forEach((task) => {
-    const taskCard = document.createElement('div');
-    taskCard.classList = 'task-content';
-    taskCard.innerHTML = `<div class="task-text">
-                            <input type="checkbox">
-                            <p class="task-text">${task.description}</p>
-                          </div>
-                          <i class="fa-solid fa-trash-can" id="delete-task"></i>`;
-    taskContainer.appendChild(taskCard);
-  });
-};
+/* Add To List */
+newTask.addEventListener('keypress', (e) => {
+  (0,_modules_functionality_js__WEBPACK_IMPORTED_MODULE_1__.addToList)(e);
+});
 
-showTasks();
+/* Add to List (clicked) */
+submit.addEventListener('click', () => {
+  (0,_modules_functionality_js__WEBPACK_IMPORTED_MODULE_1__.addToList)('clicked');
+});
 
+/* Delete Task */
+taskList.addEventListener('click', (event) => {
+  const clickedItem = event.target.classList[event.target.classList.length - 1];
+  const li = event.target.parentElement;
+  if (clickedItem === 'delete-task') {
+    (0,_modules_functionality_js__WEBPACK_IMPORTED_MODULE_1__.removeList)(li.id);
+    event.target.parentElement.remove();
+  }
+});
+
+/* Edit Task */
+taskList.addEventListener('keypress', (event) => {
+  const pressedItem = event.target.classList[event.target.classList.length - 1];
+  const li = event.target.parentElement;
+  if (pressedItem === 'task-edit') {
+    (0,_modules_functionality_js__WEBPACK_IMPORTED_MODULE_1__.editList)({ index: li.id, event });
+  }
+});
+
+document.addEventListener('DOMContentLoaded', (0,_modules_functionality_js__WEBPACK_IMPORTED_MODULE_1__.deployList)());
 
 /***/ }),
 /* 1 */
@@ -354,7 +355,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_1___default()((_node_modules_css_loader_dist_runtime_noSourceMaps_js__WEBPACK_IMPORTED_MODULE_0___default()));
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n  padding: 0;\r\n  margin: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  background-color: #f1f2f5;\r\n}\r\n\r\n/* Title */\r\n.title {\r\n  text-align: center;\r\n  margin-bottom: 5%;\r\n}\r\n\r\n/* ToDo List */\r\n.list-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-content: center;\r\n  justify-content: center;\r\n  width: 30%;\r\n  margin-left: 35%;\r\n  background-color: #fff;\r\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);\r\n  border-radius: 3px;\r\n  padding: 1%;\r\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "* {\r\n  padding: 0;\r\n  margin: 0;\r\n  box-sizing: border-box;\r\n}\r\n\r\nbody {\r\n  background-color: #f1f2f5;\r\n}\r\n\r\n/***** Title *****/\r\n.title {\r\n  text-align: center;\r\n  margin-bottom: 5%;\r\n}\r\n\r\n/***** To Do List *****/\r\n.list-container {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-content: center;\r\n  justify-content: center;\r\n  width: 30%;\r\n  margin-left: 35%;\r\n  background-color: #c0cbee;\r\n  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);\r\n  border-radius: 3px;\r\n  padding: 1%;\r\n}\r\n\r\n/* ToDo List => Header */\r\n.list-header {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  margin-bottom: 3%;\r\n  border-bottom: 1px #2528e9 solid;\r\n}\r\n\r\n/* ToDo List => Form */\r\n.list-form {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  align-items: center;\r\n  width: 100%;\r\n  margin-bottom: 3%;\r\n  padding-bottom: 2%;\r\n  border-bottom: #2528e9  1px solid;\r\n}\r\n\r\n.list-form input {\r\n  width: 90%;\r\n  height: 30px;\r\n  font-size: 0.8em;\r\n  padding-left: 2%;\r\n  outline: none;\r\n  border: none;\r\n}\r\n\r\n/* ToDo List => Content */\r\n.task-content {\r\n  display: flex;\r\n  justify-content: space-between;\r\n  border-bottom: 1px #2528e9  solid;\r\n  margin-bottom: 2.5%;\r\n  padding-bottom: 1%;\r\n}\r\n\r\n.task-text {\r\n  display: flex;\r\n  width: 60%;\r\n}\r\n\r\n.task-text p {\r\n  margin-left: 2%;\r\n}\r\n\r\n.task-edit {\r\n  outline: none;\r\n  border: none;\r\n  margin-left: 3%;\r\n  margin-top: 1%;\r\n  font-weight: 600;\r\n  font-size: 1em;\r\n}\r\n\r\n.completed {\r\n  text-decoration: line-through;\r\n}\r\n\r\n/**** To Do List => Clear Checked button ****/\r\n.btn-container {\r\n  display: flex;\r\n  justify-content: center;\r\n}\r\n\r\n.btn {\r\n  width: 50%;\r\n  height: 40px;\r\n  outline: none;\r\n  border: none;\r\n  background-color: #c0cbee;\r\n  font-size: 1em;\r\n  cursor: pointer;\r\n}\r\n\r\n.btn:hover {\r\n  transition: 0.5s ease-in-out;\r\n  background-color: rgb(0, 4, 255);\r\n  color: rgb(178, 181, 221);\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -458,6 +459,82 @@ module.exports = function (cssWithMappingToString) {
   };
   return list;
 };
+
+/***/ }),
+/* 11 */
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "addToList": () => (/* binding */ addToList),
+/* harmony export */   "deployList": () => (/* binding */ deployList),
+/* harmony export */   "editList": () => (/* binding */ editList),
+/* harmony export */   "removeList": () => (/* binding */ removeList)
+/* harmony export */ });
+let list = JSON.parse(localStorage.getItem('list')) || [];
+
+const taskList = document.getElementById('task-list');
+
+/* Deploy List */
+const deployList = () => {
+  taskList.innerHTML = '';
+  list.forEach((task) => {
+    const taskCard = document.createElement('div');
+    taskCard.classList = 'task-content';
+    taskCard.id = `${task.id}`;
+    taskCard.innerHTML = `<div class="task-text" id="${task.id}">
+                            ${task.completed === true ? `
+                            <input type="checkbox" checked></input>` : '<input type="checkbox"></input>'}
+                            <input class="${task.completed === true ? 'completed task-edit' : 'task-edit'}"
+                              type="text" value="${task.description}">
+                            </input>
+                          </div>
+                          <i class="fa-solid fa-trash-can delete-task" id="delete-task"></i>`;
+    taskList.appendChild(taskCard);
+  });
+};
+
+/* Add To List */
+const newTask = document.getElementById('task-input');
+const addToList = (e) => {
+  if (newTask.value === '') return;
+  if (e.key === 'Enter' || e === 'clicked') {
+    const taskItem = {
+      description: newTask.value,
+      completed: false,
+      id: list.length + 1,
+    };
+
+    newTask.value = '';
+    list = [...list, taskItem];
+    localStorage.setItem('list', JSON.stringify(list));
+    deployList();
+  }
+};
+
+/* Edit List Value */
+const editList = ({ index, event }) => {
+  if (event.target.value === '') return;
+  if (event.key === 'Enter') {
+    list[index - 1].description = event.target.value;
+    localStorage.setItem('list', JSON.stringify(list));
+  }
+};
+
+/* Remove List Value */
+const removeList = (targetI) => {
+  const listFiltered = list.filter((item) => +item.id !== +targetI);
+  const newList = listFiltered.map((item, id) => ({
+    description: item.description,
+    completed: item.completed,
+    id: id + 1,
+  }));
+  localStorage.setItem('list', JSON.stringify(newList));
+  list = newList;
+  deployList();
+};
+
+
 
 /***/ })
 ],
