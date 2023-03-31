@@ -8,13 +8,13 @@ body {
   background-color: #f1f2f5;
 }
 
-/* Title */
+/***** Title *****/
 .title {
   text-align: center;
   margin-bottom: 5%;
 }
 
-/* ToDo List */
+/***** To Do List *****/
 .list-container {
   display: flex;
   flex-direction: column;
@@ -22,7 +22,7 @@ body {
   justify-content: center;
   width: 30%;
   margin-left: 35%;
-  background-color: #fff;
+  background-color: #c0cbee;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   border-radius: 3px;
   padding: 1%;
@@ -33,7 +33,7 @@ body {
   display: flex;
   justify-content: space-between;
   margin-bottom: 3%;
-  border-bottom: 1px #ddd solid;
+  border-bottom: 1px #2528e9 solid;
 }
 
 /* ToDo List => Form */
@@ -44,7 +44,7 @@ body {
   width: 100%;
   margin-bottom: 3%;
   padding-bottom: 2%;
-  border-bottom: #ddd 1px solid;
+  border-bottom: #2528e9  1px solid;
 }
 
 .list-form input {
@@ -60,7 +60,7 @@ body {
 .task-content {
   display: flex;
   justify-content: space-between;
-  border-bottom: 1px #ddd solid;
+  border-bottom: 1px #2528e9  solid;
   margin-bottom: 2.5%;
   padding-bottom: 1%;
 }
@@ -98,7 +98,7 @@ body {
   height: 40px;
   outline: none;
   border: none;
-  background-color: #f1f2f5;
+  background-color: #c0cbee;
   font-size: 1em;
   cursor: pointer;
 }
@@ -106,5 +106,5 @@ body {
 .btn:hover {
   transition: 0.5s ease-in-out;
   background-color: rgb(0, 4, 255);
-  color: white;
+  color: rgb(178, 181, 221);
 }
