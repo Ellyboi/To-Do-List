@@ -3,17 +3,17 @@ import './styles.css';
 
 const activitiesToDo = [
   {
-    description: 'First To Do',
+    description: 'First To Do List',
     completed: false,
     id: 1,
   },
   {
-    description: 'Second To Do',
+    description: 'Second To Do List',
     completed: false,
     id: 2,
   },
   {
-    description: 'Third To Do',
+    description: 'Third To Do List',
     completed: false,
     id: 3,
   },
