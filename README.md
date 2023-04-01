@@ -27,7 +27,7 @@
 - [🙏 Acknowledgements](#acknowledgements)
 - [📝 License](#license)
 
-# ToDo List <a name="about-project"></a>
+# To Do List <a name="about-project"></a>
 
 Welcome to one of the best apps to manage your daily activities in a simple way. Welcome to the To Do List!
 
@@ -110,7 +110,7 @@ In order to run this project you need:
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- Not Deployed yet.
+-(https://ellyboi.github.io/To-Do-List/)
 
 <!-- Project Presntation -->
 
