@@ -110,7 +110,7 @@ In order to run this project you need:
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
--(https://ellyboi.github.io/To-Do-List/)
+- [Live link](https://ellyboi.github.io/To-Do-List/dist/)
 
 <!-- Project Presntation -->
 
